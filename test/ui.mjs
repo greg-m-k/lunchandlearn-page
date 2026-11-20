@@ -20,10 +20,10 @@ before(async () => {
 });
 after(() => browser?.close());
 
-test("hub: says what this is, credits the format's origin, links the kit, and has a card per hosted site", async () => {
+test("hub: says what this is, links the kit, and has a card per hosted site", async () => {
   await page.goto(BASE);
   assert.match(await page.textContent("header"), /Lunch & Learn is a format/);
-  assert.equal(await page.locator('header a[href="https://lnl.sam-peterson.com"]').count(), 1);
+  assert.equal(await page.locator('header a[href="https://lnl.sam-peterson.com"]').count(), 0, "credit lives in the footer only");
   assert.equal(await page.locator('header a[href="https://github.com/greg-m-k/lnl-template"]').count(), 1);
   assert.equal(await page.locator("#hosted ~ .cards .card").count(), sites.length);
   assert.equal(await page.textContent("footer"), "Lunch & Learn by Sam Peterson. Hosted by Greg Kitchen.");

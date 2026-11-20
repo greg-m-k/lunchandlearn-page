@@ -117,8 +117,7 @@ function hubPage(sites) {
     main: `<header>
   <h1>Lunch &amp; Learn</h1>
   <p class="lead"><strong>A Lunch &amp; Learn is a format</strong>: one design question a team keeps debating, every answer
-    to it built for real, and an hour to try them side by side. The format comes from Sam Peterson's
-    <a href="${ORIGIN}">Lunch &amp; Learn</a>, the original site of this kind.</p>
+    to it built for real, and an hour to try them side by side.</p>
   <p class="lead">This site hosts yours for free, at lunchandlearn.page/<em>you</em>/, so you do not need a domain of your own.
     You write the articles; the cards, lesson chips, layout and dark mode come with it. Your working code stays in your own
     repository, and each topic links to it.</p>
