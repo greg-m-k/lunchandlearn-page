@@ -1,7 +1,7 @@
 {
   "name": "lunchandlearn-page",
   "version": "1.0.0",
-  "description": "Free hosting for Lunch & Learn sites at lunchandlearn.page",
+  "description": "Hosting for Lunch & Learn sites at lunchandlearn.page",
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test test/*.test.mjs",

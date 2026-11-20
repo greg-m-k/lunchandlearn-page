@@ -1,6 +1,6 @@
 # lunchandlearn.page
 
-Free hosting for Lunch & Learn sites. Each person gets `lunchandlearn.page/<handle>/`: a home page of topic cards and one
+Hosting for Lunch & Learn sites. Each person gets `lunchandlearn.page/<handle>/`: a home page of topic cards and one
 article per lesson, with the lesson chips, layout and dark mode already done. You do not need a domain of your own.
 
 A Lunch & Learn is a format: one design question a team keeps debating, every answer to it built for real, and an hour

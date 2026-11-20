@@ -25,6 +25,7 @@ test("hub: says what this is, links the kit, and has a card per hosted site", as
   assert.match(await page.textContent("header"), /Lunch & Learn is a format/);
   assert.equal(await page.locator('header a[href="https://lnl.sam-peterson.com"]').count(), 0, "credit lives in the footer only");
   assert.equal(await page.locator('header a[href="https://github.com/greg-m-k/lnl-template"]').count(), 1);
+  assert.doesNotMatch(await page.content(), /\bfree\b/i, "the site never says free");
   assert.equal(await page.locator("#hosted ~ .cards .card").count(), sites.length);
   assert.equal(await page.textContent("footer"), "Made by Sam Peterson, Greg Kitchen.");
   assert.equal(await page.locator('footer a[href="https://lnl.sam-peterson.com"]').count(), 1, "Sam Peterson credited first");

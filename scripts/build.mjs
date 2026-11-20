@@ -112,12 +112,12 @@ function hubPage(sites) {
         `${site.author.name} · ${site.topics.length} ${site.topics.length === 1 ? "topic" : "topics"}`)).join("\n")}</ul>`
     : "<p>None yet. Yours could be the first.</p>";
   return page({
-    title: "Lunch & Learn", description: "Free hosting for Lunch & Learn sites.", mainClass: "home",
+    title: "Lunch & Learn", description: "Hosting for Lunch & Learn sites.", mainClass: "home",
     main: `<header>
   <h1>Lunch &amp; Learn</h1>
   <p class="lead"><strong>A Lunch &amp; Learn is a format</strong>: one design question a team keeps debating, every answer
     to it built for real, and an hour to try them side by side.</p>
-  <p class="lead">This site hosts yours for free, at lunchandlearn.page/<em>you</em>/, so you do not need a domain of your own.
+  <p class="lead">This site hosts yours at lunchandlearn.page/<em>you</em>/, so you do not need a domain of your own.
     You write the articles; the cards, lesson chips, layout and dark mode come with it. Your working code stays in your own
     repository, and each topic links to it.</p>
   <p class="lead">To add yours, open a pull request to <a href="${REGISTRY}">the registry</a> with a folder
