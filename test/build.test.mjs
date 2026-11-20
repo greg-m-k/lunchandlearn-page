@@ -68,7 +68,8 @@ test("build: the hub lists each site, a site shows one card per lesson, an artic
   assert.match(home, /href="https:\/\/github\.com\/jane\/retries-demo"/);
   const article = readFileSync(join(out, "jane", "retries", "storm", "index.html"), "utf8");
   assert.match(article, /<a href="\/jane\/retries\/storm\/" aria-current="page">The retry storm<\/a>/);
-  assert.match(article, /Made by <a href="https:\/\/example\.com\/jane">Jane Doe<\/a>/);
+  assert.match(article, /Made by <a href="https:\/\/example\.com\/jane">Jane Doe<\/a>\. Lunch &amp; Learn by <a href="https:\/\/lnl\.sam-peterson\.com">Sam Peterson<\/a>\. Hosted on <a href="\/">lunchandlearn\.page<\/a> by <a href="https:\/\/greg\.kitchen">Greg Kitchen<\/a>\./);
+  assert.match(hub, /<footer class="site">Lunch &amp; Learn by <a href="https:\/\/lnl\.sam-peterson\.com">Sam Peterson<\/a>\. Hosted by <a href="https:\/\/greg\.kitchen">Greg Kitchen<\/a>\.<\/footer>/);
   assert.match(article, /They also hurt\./);
   assert.ok(existsSync(join(out, "styles.css")) && existsSync(join(out, "404.html")));
 });

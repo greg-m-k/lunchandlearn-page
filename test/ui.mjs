@@ -26,14 +26,15 @@ test("hub: says what this is, credits the format's origin, links the kit, and ha
   assert.equal(await page.locator('header a[href="https://lnl.sam-peterson.com"]').count(), 1);
   assert.equal(await page.locator('header a[href="https://github.com/greg-m-k/lnl-template"]').count(), 1);
   assert.equal(await page.locator("#hosted ~ .cards .card").count(), sites.length);
-  assert.equal(await page.textContent("footer"), "Made by Greg Kitchen.");
+  assert.equal(await page.textContent("footer"), "Lunch & Learn by Sam Peterson. Hosted by Greg Kitchen.");
+  assert.equal(await page.locator('footer a[href="https://lnl.sam-peterson.com"]').count(), 1, "Sam Peterson credited first");
 });
 
 test("a site: one card per lesson, and the author credited", async () => {
   for (const s of sites) {
     await page.goto(`${BASE}/${s.handle}/`);
     assert.equal(await page.locator(".card").count(), s.topics.reduce((n, t) => n + t.lessons.length, 0), s.handle);
-    assert.match(await page.textContent("footer"), new RegExp(`Made by ${s.author.name}`));
+    assert.equal(await page.textContent("footer"), `Made by ${s.author.name}. Lunch & Learn by Sam Peterson. Hosted on lunchandlearn.page by Greg Kitchen.`);
   }
 });
 
@@ -42,7 +43,7 @@ test("an article: chips for its topic with itself current, the article, and the 
     await page.goto(BASE + path);
     assert.equal(await page.textContent('.chips [aria-current="page"]'), l.chip ?? l.title, path);
     assert.ok((await page.textContent("article")).length > 50, path);
-    assert.match(await page.textContent("main > footer"), new RegExp(`Made by ${s.author.name}`), path);
+    assert.equal(await page.textContent("main > footer"), `Made by ${s.author.name}. Lunch & Learn by Sam Peterson. Hosted on lunchandlearn.page by Greg Kitchen.`, path);
   }
 });
 
