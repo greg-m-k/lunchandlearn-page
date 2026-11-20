@@ -101,8 +101,7 @@ ${footer}
 </html>
 `;
 const link = (a) => (a.url ? `<a href="${esc(a.url)}">${esc(a.name)}</a>` : esc(a.name));
-const FORMAT = `Lunch &amp; Learn by ${link({ name: "Sam Peterson", url: ORIGIN })}.`;
-const hosted = (where) => `${where} by ${link(HOST)}.`;
+const MAKERS = `${link({ name: "Sam Peterson", url: ORIGIN })} and ${link(HOST)}`;
 const credit = (a) => `Made by ${link(a)}.`;
 const card = (href, title, blurb) =>
   `<li><a class="card" href="${href}"><h3>${esc(title)}</h3><p>${esc(blurb)}</p></a></li>`;
@@ -129,7 +128,7 @@ function hubPage(sites) {
   <h2 id="hosted">Hosted here</h2>
   ${list}
 </section>`,
-    footer: `<footer class="site">${FORMAT} ${hosted("Hosted")}</footer>`,
+    footer: `<footer class="site">Made by ${MAKERS}.</footer>`,
   });
 }
 
@@ -148,7 +147,7 @@ ${t.lessons.map((l) => card(`/${handle}/${t.slug}/${l.slug}/`, l.title, l.blurb)
   <p class="lead">${esc(site.intro)}</p>
 </header>
 ${topics}`,
-    footer: `<footer class="site">${credit(site.author)} ${FORMAT} ${hosted('Hosted on <a href="/">lunchandlearn.page</a>')}</footer>`,
+    footer: `<footer class="site">${credit(site.author)} <a href="/">lunchandlearn.page</a> is made by ${MAKERS}.</footer>`,
   });
 }
 
@@ -167,7 +166,7 @@ function articlePage(handle, site, topic, lesson, html) {
 ${html}
 </article>
 ${topic.code ? `<p class="status">The working code for this topic: <a href="${esc(topic.code)}">${esc(topic.code)}</a></p>\n` : ""}${
-  next ? `<p class="next">Next: <a href="/${handle}/${topic.slug}/${next.slug}/">${esc(next.title)} →</a></p>\n` : ""}<footer>${credit(site.author)} ${FORMAT} ${hosted('Hosted on <a href="/">lunchandlearn.page</a>')}</footer>`,
+  next ? `<p class="next">Next: <a href="/${handle}/${topic.slug}/${next.slug}/">${esc(next.title)} →</a></p>\n` : ""}<footer>${credit(site.author)} <a href="/">lunchandlearn.page</a> is made by ${MAKERS}.</footer>`,
     footer: "",
   });
 }
@@ -175,7 +174,7 @@ ${topic.code ? `<p class="status">The working code for this topic: <a href="${es
 const notFound = () => page({
   title: "Not found · Lunch & Learn", mainClass: "home",
   main: `<header><h1>Not found</h1><p class="lead">There is no page here. <a href="/">See every Lunch &amp; Learn hosted on this site</a>.</p></header>`,
-  footer: `<footer class="site">${FORMAT} ${hosted("Hosted")}</footer>`,
+  footer: `<footer class="site">Made by ${MAKERS}.</footer>`,
 });
 
 // ---- The build ------------------------------------------------------------------------------------
