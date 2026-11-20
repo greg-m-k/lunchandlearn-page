@@ -1,0 +1,7 @@
+{
+  // lunchandlearn.page: static pages only, built from sites/ by `npm run build`. No Worker code runs.
+  "name": "lunchandlearn-page",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
+  "routes": [{ "pattern": "lunchandlearn.page", "custom_domain": true }]
+}

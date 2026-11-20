@@ -1,0 +1,39 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # A contributor's pull request changes one site folder and nothing else.
+      - name: One site per pull request
+        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != github.repository_owner
+        run: |
+          changed=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          echo "$changed"
+          outside=$(echo "$changed" | grep -v '^sites/' || true)
+          folders=$(echo "$changed" | grep '^sites/' | cut -d/ -f2 | sort -u | wc -l)
+          if [ -n "$outside" ]; then echo "::error::Only files under sites/<your-handle>/ can change: $outside"; exit 1; fi
+          if [ "$folders" -gt 1 ]; then echo "::error::A pull request changes one site folder."; exit 1; fi
+      - run: npm test
+      - run: npm run build
+      - name: Start the built site locally
+        run: |
+          npx wrangler dev --port 8830 > wrangler-dev.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf http://localhost:8830/ > /dev/null && exit 0; sleep 1; done
+          cat wrangler-dev.log; exit 1
+      - name: Walk every page in Chrome
+        run: npm run ui
+        env:
+          CHANNEL: chrome

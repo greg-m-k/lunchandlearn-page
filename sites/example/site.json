@@ -1,0 +1,20 @@
+{
+  "title": "Example Lunch & Learn",
+  "author": { "name": "Greg Kitchen", "url": "https://greg.kitchen" },
+  "intro": "A reference site for contributors. It shows the format every site here follows, and its two articles explain how to publish your own.",
+  "topics": [
+    {
+      "slug": "publishing",
+      "emoji": "📮",
+      "title": "Publishing a Lunch & Learn here",
+      "summary": "What to send, where it goes, and what your articles can contain.",
+      "code": "https://github.com/greg-m-k/lunchandlearn-page",
+      "lessons": [
+        { "slug": "start", "title": "Start here: what you send", "chip": "Start here",
+          "blurb": "One folder with a site.json and a Markdown file per article, sent as a pull request." },
+        { "slug": "articles", "title": "What an article can contain", "chip": "Articles",
+          "blurb": "Headings, code, tables, images and links, and what is left out on purpose." }
+      ]
+    }
+  ]
+}

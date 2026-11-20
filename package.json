@@ -1,0 +1,21 @@
+{
+  "name": "lunchandlearn-page",
+  "version": "1.0.0",
+  "description": "Free hosting for Lunch & Learn sites at lunchandlearn.page",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "dev": "npm run build && wrangler dev --port 8830",
+    "ui": "node --test test/ui.mjs",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "type": "module",
+  "dependencies": {
+    "marked": "^15.0.12"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.1",
+    "wrangler": "^4.165.0"
+  },
+  "private": true
+}
