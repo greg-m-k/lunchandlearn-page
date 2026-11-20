@@ -101,7 +101,7 @@ ${footer}
 </html>
 `;
 const link = (a) => (a.url ? `<a href="${esc(a.url)}">${esc(a.name)}</a>` : esc(a.name));
-const MAKERS = `${link({ name: "Sam Peterson", url: ORIGIN })} and ${link(HOST)}`;
+const MAKERS = `${link({ name: "Sam Peterson", url: ORIGIN })}, ${link(HOST)}`;
 const credit = (a) => `Made by ${link(a)}.`;
 const card = (href, title, blurb) =>
   `<li><a class="card" href="${href}"><h3>${esc(title)}</h3><p>${esc(blurb)}</p></a></li>`;
